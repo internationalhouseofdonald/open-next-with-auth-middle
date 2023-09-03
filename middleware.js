@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import { withAuth } from "next-auth/middleware";
-import { Config } from "sst/node/config";
 
 export default withAuth({
-  secret: Config.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     authorized: ({ token }) => {
       console.log("Authorized middleware callback token: ", token);
